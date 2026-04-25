@@ -1,94 +1,97 @@
-* {
-  box-sizing: border-box;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 0 20px;
-}
 body {
   margin:0;
-  font-family:Arial;
+  font-family:sans-serif;
   background:#000;
   color:white;
 }
 
+/* NAV */
 header {
   display:flex;
   justify-content:space-between;
   padding:15px 30px;
-  background:black;
+  background:#000;
   position:fixed;
   width:100%;
+  top:0;
   z-index:1000;
 }
 
-.logo { color:orange; font-weight:bold; }
-
-.menu { font-size:24px; cursor:pointer; }
-
-.mobile-menu {
-  position:fixed;
-  right:-100%;
-  top:0;
-  width:70%;
-  height:100%;
-  background:black;
-  padding:20px;
-  transition:0.3s;
+.logo {
+  color:orange;
+  font-weight:bold;
 }
 
-.mobile-menu.active { right:0; }
-
+/* HERO */
 .hero {
-  height:90vh;
-  background:url("images/gym1.jpg") center/cover;
+  height:100vh;
+  background:url("images/gym1.jpg") center/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
 }
 
-.hero span { color:orange; }
-
-section { padding:80px 20px; }
-
-.about, .inquiry { background:#111; }
-
-.plans { background:#0d0d0d; }
-
-.plan-card {
-  background:#222;
-  padding:20px;
-  margin:10px;
+.hero h1 {
+  font-size:48px;
 }
 
+.hero span {
+  color:orange;
+}
+
+/* SECTION SPACING */
+section {
+  padding:100px 20px;
+}
+
+/* ABOUT */
+.about {
+  text-align:center;
+}
+
+/* PLANS */
+.plan-card {
+  background:#111;
+  padding:20px;
+  margin:10px auto;
+  max-width:350px;
+  border-radius:10px;
+}
+
+/* GALLERY */
 .grid {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .grid img {
   width:100%;
-  height:220px;
+  height:200px;
   object-fit:cover;
+  border-radius:12px;
 }
 
+/* FORM */
 input, select, button {
   display:block;
   margin:10px auto;
-  padding:10px;
-  width:250px;
+  padding:12px;
+  width:260px;
 }
 
+/* BUTTON */
 button {
   background:orange;
   border:none;
+  font-weight:bold;
   cursor:pointer;
 }
 
+/* WHATSAPP */
 .whatsapp {
   position:fixed;
   bottom:20px;
