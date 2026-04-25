@@ -1,26 +1,11 @@
-function toggleMenu(){
+function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("active");
 }
 
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:'smooth'});
-}
+function submitInquiry() {
+  const name = document.getElementById("custName").value;
+  const phone = document.getElementById("custPhone").value;
+  const plan = document.getElementById("custPlan").value;
 
-function selectPlan(p){
-  document.getElementById("plan").value=p;
-  scrollToSection("inquiry");
+  alert("Inquiry Submitted:\n" + name + "\n" + phone + "\n" + plan);
 }
-
-function submit(){
-  alert("Thanks! We will contact you.");
-}
-
-/* SCROLL ANIMATION */
-window.addEventListener("scroll", () => {
-  document.querySelectorAll(".fade").forEach(el => {
-    let top = el.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      el.classList.add("show");
-    }
-  });
-});
