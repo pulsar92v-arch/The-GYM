@@ -1,84 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Gym Rourkela</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAV -->
+<!-- NAVBAR -->
 <header>
-  <div class="logo">🏋 THE GYM</div>
+  <div class="logo">🏋 THE GYM ROURKELA</div>
   <div class="menu" onclick="toggleMenu()">☰</div>
 </header>
 
 <!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <span onclick="toggleMenu()">✖</span>
-  <a href="#about">About</a>
-  <a href="#plans">Plans</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#inquiry">Join</a>
-  <a href="https://www.instagram.com/thegym_rourkela/" target="_blank">Instagram</a>
+  <a href="#">HOME</a>
+  <a href="#plans">PLANS</a>
+  <a href="#about">ABOUT</a>
+  <a href="#inquiry">INQUIRY</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="overlay"></div>
-  <div class="hero-text fade">
+  <div class="content">
     <h1>BUILD YOUR <span>LEGACY</span></h1>
-    <p>No gimmicks. Just iron, sweat & results.</p>
-    <button onclick="scrollToSection('inquiry')">JOIN NOW</button>
+    <p>No gimmicks, just iron, sweat and results.</p>
+    <a href="https://www.instagram.com/thegym_rourkela/" target="_blank">
+      <button>VIEW INSTAGRAM</button>
+    </a>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about fade" id="about">
-  <h2>MORE THAN A GYM</h2>
-  <p>Elite training facility in Rourkela with modern equipment & hardcore training culture.</p>
-</section>
-
-<!-- PLANS -->
-<section class="plans fade" id="plans">
-  <h2>Membership Plans</h2>
-  <div class="cards">
-    <div class="card" onclick="selectPlan('Monthly - 2000')">Monthly ₹2000</div>
-    <div class="card" onclick="selectPlan('Quarterly - 5000')">Quarterly ₹5000</div>
-    <div class="card" onclick="selectPlan('Half Yearly - 8000')">Half ₹8000</div>
-    <div class="card" onclick="selectPlan('Yearly - 13000')">Yearly ₹13000</div>
+<section id="about" class="about">
+  <div class="left">
+    <h2>MORE THAN A GYM.<br>A PROVING GROUND.</h2>
+    <p>Top class equipment, serious training and results focused environment.</p>
+  </div>
+  <div class="right">
+    <img src="images/gym2.jpg">
   </div>
 </section>
 
-<!-- GALLERY -->
-<section class="gallery fade" id="gallery">
-  <h2>Our Gym</h2>
-  <div class="grid">
-    <img src="images/gym1.jpg">
-    <img src="images/gym2.jpg">
-    <img src="images/gym3.jpg">
-    <img src="images/gym4.jpg">
-    <img src="images/gym5.jpg">
-    <img src="images/gym6.jpg">
+<!-- PLANS -->
+<section id="plans" class="plans">
+  <h2>Membership Plans</h2>
+
+  <div class="plan-card">
+    <h3>Individual</h3>
+    <p>Monthly - ₹2000</p>
+    <p>Quarterly - ₹5000</p>
+    <p>Half Yearly - ₹8000</p>
+    <p>Yearly - ₹13000</p>
+  </div>
+
+  <div class="plan-card">
+    <h3>Group</h3>
+    <p>Quarterly - ₹4500</p>
+    <p>Half Yearly - ₹7000</p>
+    <p>Yearly - ₹12000</p>
   </div>
 </section>
 
 <!-- INQUIRY -->
-<section class="inquiry fade" id="inquiry">
+<section id="inquiry" class="inquiry">
   <h2>Join Now</h2>
-  <input id="name" placeholder="Name">
-  <input id="phone" placeholder="Phone">
 
-  <select id="plan">
+  <input type="text" id="custName" placeholder="Name">
+  <input type="text" id="custPhone" placeholder="Phone">
+
+  <select id="custPlan">
     <option>Monthly - 2000</option>
     <option>Quarterly - 5000</option>
     <option>Half Yearly - 8000</option>
     <option>Yearly - 13000</option>
   </select>
 
-  <button onclick="submit()">Submit</button>
+  <button onclick="submitInquiry()">Submit</button>
 </section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <h2>Gallery</h2>
+  <div class="grid">
+    <img src="images/gym1.jpg">
+    <img src="images/gym2.jpg">
+    <img src="images/gym3.jpg">
+    <img src="images/gym4.jpg">
+  </div>
+</section>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/91984191408" class="whatsapp">💬</a>
 
 <script src="script.js"></script>
 </body>
