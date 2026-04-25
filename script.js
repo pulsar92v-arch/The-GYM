@@ -12,5 +12,15 @@ function selectPlan(p){
 }
 
 function submit(){
-  alert("Submitted successfully");
+  alert("Thanks! We will contact you.");
 }
+
+/* SCROLL ANIMATION */
+window.addEventListener("scroll", () => {
+  document.querySelectorAll(".fade").forEach(el => {
+    let top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      el.classList.add("show");
+    }
+  });
+});
