@@ -10,38 +10,39 @@
 
 <!-- NAV -->
 <header>
-  <div class="logo">THE GYM</div>
+  <div class="logo">🏋 THE GYM</div>
   <div class="menu" onclick="toggleMenu()">☰</div>
 </header>
 
+<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <span onclick="toggleMenu()">✖</span>
   <a href="#about">About</a>
   <a href="#plans">Plans</a>
   <a href="#gallery">Gallery</a>
   <a href="#inquiry">Join</a>
+  <a href="https://www.instagram.com/thegym_rourkela/" target="_blank">Instagram</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="overlay"></div>
-  <div class="hero-text">
-    <h1>BUILD YOUR LEGACY</h1>
-    <p>Train Hard. Stay Strong.</p>
+  <div class="hero-text fade">
+    <h1>BUILD YOUR <span>LEGACY</span></h1>
+    <p>No gimmicks. Just iron, sweat & results.</p>
     <button onclick="scrollToSection('inquiry')">JOIN NOW</button>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section class="about" id="about">
-  <h2>Why Choose Us</h2>
-  <p>Hardcore gym with best equipment & trainers.</p>
+<section class="about fade" id="about">
+  <h2>MORE THAN A GYM</h2>
+  <p>Elite training facility in Rourkela with modern equipment & hardcore training culture.</p>
 </section>
 
 <!-- PLANS -->
-<section class="plans" id="plans">
+<section class="plans fade" id="plans">
   <h2>Membership Plans</h2>
-
   <div class="cards">
     <div class="card" onclick="selectPlan('Monthly - 2000')">Monthly ₹2000</div>
     <div class="card" onclick="selectPlan('Quarterly - 5000')">Quarterly ₹5000</div>
@@ -51,18 +52,20 @@
 </section>
 
 <!-- GALLERY -->
-<section class="gallery" id="gallery">
+<section class="gallery fade" id="gallery">
   <h2>Our Gym</h2>
   <div class="grid">
     <img src="images/gym1.jpg">
     <img src="images/gym2.jpg">
     <img src="images/gym3.jpg">
     <img src="images/gym4.jpg">
+    <img src="images/gym5.jpg">
+    <img src="images/gym6.jpg">
   </div>
 </section>
 
 <!-- INQUIRY -->
-<section class="inquiry" id="inquiry">
+<section class="inquiry fade" id="inquiry">
   <h2>Join Now</h2>
   <input id="name" placeholder="Name">
   <input id="phone" placeholder="Phone">
