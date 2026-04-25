@@ -1,108 +1,80 @@
-let members = JSON.parse(localStorage.getItem("members")) || [];
-let stock = JSON.parse(localStorage.getItem("stock")) || [];
-let inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
-
-function saveData() {
-  localStorage.setItem("members", JSON.stringify(members));
-  localStorage.setItem("stock", JSON.stringify(stock));
-  localStorage.setItem("inquiries", JSON.stringify(inquiries));
+function toggleMenu(){
+  let m=document.getElementById("mobileMenu");
+  m.style.display = m.style.display==="block"?"none":"block";
 }
 
-// MEMBERS
-function addMember() {
-  let name = document.getElementById("name").value;
-  let date = new Date(document.getElementById("joinDate").value);
-  let plan = parseInt(document.getElementById("plan").value);
+// inquiry
+function submitInquiry(){
+  let data=JSON.parse(localStorage.getItem("inq"))||[];
+  data.push({
+    name:custName.value,
+    phone:custPhone.value,
+    plan:custPlan.value
+  });
+  localStorage.setItem("inq",JSON.stringify(data));
+  alert("Submitted");
+}
 
-  let expiry = new Date(date);
-  expiry.setDate(expiry.getDate() + plan);
+// auto plan select
+function selectPlan(p){
+  custPlan.value=p;
+  document.getElementById("inquiry").scrollIntoView({behavior:'smooth'});
+}
 
-  members.push({ name, expiry });
-  saveData();
+// dashboard
+function goHome(){location="index.html"}
+
+function showTab(t){
+  document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+  document.getElementById(t).classList.add("active");
+}
+
+// members
+let members=JSON.parse(localStorage.getItem("mem"))||[];
+
+function addMember(){
+  members.push({name:name.value});
+  localStorage.setItem("mem",JSON.stringify(members));
   displayMembers();
 }
 
-function displayMembers() {
-  let list = document.getElementById("memberList");
-  list.innerHTML = "";
-
-  members.forEach(m => {
-    let li = document.createElement("li");
-    li.textContent = m.name + " - Exp: " + new Date(m.expiry).toDateString();
-    list.appendChild(li);
-  });
-
-  checkExpiry();
-}
-
-// EXPIRY ALERT
-function checkExpiry() {
-  let alerts = document.getElementById("alerts");
-  alerts.innerHTML = "";
-
-  let today = new Date();
-
-  members.forEach(m => {
-    let diff = (new Date(m.expiry) - today) / (1000*60*60*24);
-
-    if (diff <= 1) {
-      let li = document.createElement("li");
-      li.textContent = m.name + " expiring soon!";
-      alerts.appendChild(li);
-    }
+function displayMembers(){
+  memberList.innerHTML="";
+  members.forEach(m=>{
+    let li=document.createElement("li");
+    li.textContent=m.name;
+    memberList.appendChild(li);
   });
 }
+displayMembers();
 
-// STOCK
-function addStock() {
-  let name = document.getElementById("product").value;
-  let qty = parseInt(document.getElementById("quantity").value);
+// stock
+let stock=JSON.parse(localStorage.getItem("stock"))||[];
 
-  stock.push({ name, qty });
-  saveData();
+function addStock(){
+  stock.push({name:product.value,qty:quantity.value});
+  localStorage.setItem("stock",JSON.stringify(stock));
   displayStock();
 }
 
-function displayStock() {
-  let list = document.getElementById("stockList");
-  list.innerHTML = "";
-
-  stock.forEach(s => {
-    let li = document.createElement("li");
-    li.textContent = s.name + " - " + s.qty;
-
-    if (s.qty <= 10) {
-      li.style.color = "red";
-      li.textContent += " ⚠ Low Stock!";
-    }
-
-    list.appendChild(li);
+function displayStock(){
+  stockList.innerHTML="";
+  stock.forEach(s=>{
+    let li=document.createElement("li");
+    li.textContent=s.name+" "+s.qty;
+    stockList.appendChild(li);
   });
 }
-
-// INQUIRY
-function addInquiry() {
-  let name = document.getElementById("inqName").value;
-  let phone = document.getElementById("inqPhone").value;
-  let msg = document.getElementById("inqMsg").value;
-
-  inquiries.push({ name, phone, msg });
-  saveData();
-  displayInquiry();
-}
-
-function displayInquiry() {
-  let list = document.getElementById("inquiryList");
-  list.innerHTML = "";
-
-  inquiries.forEach(i => {
-    let li = document.createElement("li");
-    li.textContent = i.name + " - " + i.phone;
-    list.appendChild(li);
-  });
-}
-
-// INIT
-displayMembers();
 displayStock();
+
+// inquiry list
+function displayInquiry(){
+  let data=JSON.parse(localStorage.getItem("inq"))||[];
+  inquiryList.innerHTML="";
+  data.forEach(i=>{
+    let li=document.createElement("li");
+    li.textContent=i.name+" "+i.plan;
+    inquiryList.appendChild(li);
+  });
+}
 displayInquiry();
