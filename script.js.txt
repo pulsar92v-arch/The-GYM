@@ -1,0 +1,108 @@
+let members = JSON.parse(localStorage.getItem("members")) || [];
+let stock = JSON.parse(localStorage.getItem("stock")) || [];
+let inquiries = JSON.parse(localStorage.getItem("inquiries")) || [];
+
+function saveData() {
+  localStorage.setItem("members", JSON.stringify(members));
+  localStorage.setItem("stock", JSON.stringify(stock));
+  localStorage.setItem("inquiries", JSON.stringify(inquiries));
+}
+
+// MEMBERS
+function addMember() {
+  let name = document.getElementById("name").value;
+  let date = new Date(document.getElementById("joinDate").value);
+  let plan = parseInt(document.getElementById("plan").value);
+
+  let expiry = new Date(date);
+  expiry.setDate(expiry.getDate() + plan);
+
+  members.push({ name, expiry });
+  saveData();
+  displayMembers();
+}
+
+function displayMembers() {
+  let list = document.getElementById("memberList");
+  list.innerHTML = "";
+
+  members.forEach(m => {
+    let li = document.createElement("li");
+    li.textContent = m.name + " - Exp: " + new Date(m.expiry).toDateString();
+    list.appendChild(li);
+  });
+
+  checkExpiry();
+}
+
+// EXPIRY ALERT
+function checkExpiry() {
+  let alerts = document.getElementById("alerts");
+  alerts.innerHTML = "";
+
+  let today = new Date();
+
+  members.forEach(m => {
+    let diff = (new Date(m.expiry) - today) / (1000*60*60*24);
+
+    if (diff <= 1) {
+      let li = document.createElement("li");
+      li.textContent = m.name + " expiring soon!";
+      alerts.appendChild(li);
+    }
+  });
+}
+
+// STOCK
+function addStock() {
+  let name = document.getElementById("product").value;
+  let qty = parseInt(document.getElementById("quantity").value);
+
+  stock.push({ name, qty });
+  saveData();
+  displayStock();
+}
+
+function displayStock() {
+  let list = document.getElementById("stockList");
+  list.innerHTML = "";
+
+  stock.forEach(s => {
+    let li = document.createElement("li");
+    li.textContent = s.name + " - " + s.qty;
+
+    if (s.qty <= 10) {
+      li.style.color = "red";
+      li.textContent += " ⚠ Low Stock!";
+    }
+
+    list.appendChild(li);
+  });
+}
+
+// INQUIRY
+function addInquiry() {
+  let name = document.getElementById("inqName").value;
+  let phone = document.getElementById("inqPhone").value;
+  let msg = document.getElementById("inqMsg").value;
+
+  inquiries.push({ name, phone, msg });
+  saveData();
+  displayInquiry();
+}
+
+function displayInquiry() {
+  let list = document.getElementById("inquiryList");
+  list.innerHTML = "";
+
+  inquiries.forEach(i => {
+    let li = document.createElement("li");
+    li.textContent = i.name + " - " + i.phone;
+    list.appendChild(li);
+  });
+}
+
+// INIT
+displayMembers();
+displayStock();
+displayInquiry();

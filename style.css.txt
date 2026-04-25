@@ -1,0 +1,37 @@
+body {
+  font-family: Arial;
+  background: #111;
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1c1c1c;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  margin: 5px 0;
+  padding: 8px;
+}
+
+button {
+  background: orange;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+}
