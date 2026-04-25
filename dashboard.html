@@ -1,66 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Gym Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+<title>Dashboard</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>🏋️ Gym Dashboard</h1>
+<header>
+  <button onclick="goHome()">⬅ Back</button>
+  <h2>Dashboard</h2>
+</header>
 
-<div class="grid">
+<nav>
+  <button onclick="showTab('members')">Members</button>
+  <button onclick="showTab('stock')">Stock</button>
+  <button onclick="showTab('inquiry')">Inquiry</button>
+</nav>
 
-<!-- MEMBER SECTION -->
-<div class="card">
-  <h2>Add Member</h2>
-  <input type="text" id="name" placeholder="Name">
+<div id="members" class="tab active">
+  <h3>Add Member</h3>
+  <input id="name">
   <input type="date" id="joinDate">
   <select id="plan">
     <option value="30">Monthly</option>
     <option value="90">Quarterly</option>
-    <option value="180">Half-Yearly</option>
-    <option value="365">Yearly</option>
   </select>
-  <button onclick="addMember()">Add Member</button>
-</div>
+  <button onclick="addMember()">Add</button>
 
-<div class="card">
-  <h2>Members</h2>
   <ul id="memberList"></ul>
-</div>
-
-<div class="card">
-  <h2>Expiry Alerts</h2>
   <ul id="alerts"></ul>
 </div>
 
-<!-- STOCK SECTION -->
-<div class="card">
-  <h2>Add Stock</h2>
-  <input type="text" id="product" placeholder="Product Name">
-  <input type="number" id="quantity" placeholder="Quantity">
-  <button onclick="addStock()">Add Stock</button>
-</div>
-
-<div class="card">
-  <h2>Stock List</h2>
+<div id="stock" class="tab">
+  <input id="product">
+  <input type="number" id="quantity">
+  <button onclick="addStock()">Add</button>
   <ul id="stockList"></ul>
 </div>
 
-<!-- INQUIRY -->
-<div class="card">
-  <h2>Customer Inquiry</h2>
-  <input type="text" id="inqName" placeholder="Name">
-  <input type="text" id="inqPhone" placeholder="Phone">
-  <textarea id="inqMsg" placeholder="Message"></textarea>
-  <button onclick="addInquiry()">Submit</button>
-</div>
-
-<div class="card">
-  <h2>Inquiries</h2>
+<div id="inquiry" class="tab">
   <ul id="inquiryList"></ul>
-</div>
-
 </div>
 
 <script src="script.js"></script>
