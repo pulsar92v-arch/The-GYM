@@ -1,11 +1,16 @@
-function toggleMenu() {
+function toggleMenu(){
   document.getElementById("mobileMenu").classList.toggle("active");
 }
 
-function submitInquiry() {
-  const name = document.getElementById("custName").value;
-  const phone = document.getElementById("custPhone").value;
-  const plan = document.getElementById("custPlan").value;
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:'smooth'});
+}
 
-  alert("Inquiry Submitted:\n" + name + "\n" + phone + "\n" + plan);
+function selectPlan(p){
+  document.getElementById("plan").value=p;
+  scrollToSection("inquiry");
+}
+
+function submit(){
+  alert("Thanks! We will contact you.");
 }
