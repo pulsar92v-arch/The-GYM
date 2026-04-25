@@ -1,87 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Gym Rourkela</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header>
-  <div class="logo">🏋 THE GYM ROURKELA</div>
+  <div class="logo">THE GYM</div>
   <div class="menu" onclick="toggleMenu()">☰</div>
 </header>
 
-<!-- MOBILE MENU -->
 <div id="mobileMenu" class="mobile-menu">
   <span onclick="toggleMenu()">✖</span>
-  <a href="#">HOME</a>
-  <a href="#plans">PLANS</a>
-  <a href="#about">ABOUT</a>
-  <a href="#inquiry">INQUIRY</a>
+  <a href="#about">About</a>
+  <a href="#plans">Plans</a>
+  <a href="#gallery">Gallery</a>
+  <a href="#inquiry">Join</a>
+  <a href="https://www.instagram.com/thegym_rourkela/" target="_blank">Instagram</a>
 </div>
 
 <!-- HERO -->
-<<section class="hero">
-  <div>
+<section class="hero">
+  <div class="hero-content">
     <h1>BUILD YOUR <span>LEGACY</span></h1>
     <p>Train Hard. Stay Strong.</p>
+    <button onclick="scrollToSection('inquiry')">JOIN NOW</button>
   </div>
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="about">
-  <div>
-    <h2>MORE THAN A GYM</h2>
-    <p>Professional training environment with top equipment.</p>
-  </div>
-
-  <img src="images/gym2.jpg">
+<section id="about">
+  <h2>Why Choose Us</h2>
+  <p>Professional training environment with modern equipment.</p>
 </section>
 
 <!-- PLANS -->
-<section id="plans" class="plans">
+<section id="plans">
   <h2>Membership Plans</h2>
 
-  <div class="plan-card">
-    <h3>Individual</h3>
-    <p>Monthly - ₹2000</p>
-    <p>Quarterly - ₹5000</p>
-    <p>Half Yearly - ₹8000</p>
-    <p>Yearly - ₹13000</p>
+  <div class="cards">
+    <div class="card" onclick="selectPlan('Monthly - 2000')">Monthly ₹2000</div>
+    <div class="card" onclick="selectPlan('Quarterly - 5000')">Quarterly ₹5000</div>
+    <div class="card" onclick="selectPlan('Half Yearly - 8000')">Half ₹8000</div>
+    <div class="card" onclick="selectPlan('Yearly - 13000')">Yearly ₹13000</div>
   </div>
-
-  <div class="plan-card">
-    <h3>Group</h3>
-    <p>Quarterly - ₹4500</p>
-    <p>Half Yearly - ₹7000</p>
-    <p>Yearly - ₹12000</p>
-  </div>
-</section>
-
-<!-- INQUIRY -->
-<section id="inquiry" class="inquiry">
-  <h2>Join Now</h2>
-
-  <input type="text" id="custName" placeholder="Name">
-  <input type="text" id="custPhone" placeholder="Phone">
-
-  <select id="custPlan">
-    <option>Monthly - 2000</option>
-    <option>Quarterly - 5000</option>
-    <option>Half Yearly - 8000</option>
-    <option>Yearly - 13000</option>
-  </select>
-
-  <button onclick="submitInquiry()">Submit</button>
 </section>
 
 <!-- GALLERY -->
-<section class="gallery">
-  <h2>Gallery</h2>
+<section id="gallery">
+  <h2>Our Gym</h2>
   <div class="grid">
     <img src="images/gym1.jpg">
     <img src="images/gym2.jpg">
@@ -90,7 +60,22 @@
   </div>
 </section>
 
-<!-- WHATSAPP -->
+<!-- INQUIRY -->
+<section id="inquiry">
+  <h2>Join Now</h2>
+  <input id="name" placeholder="Name">
+  <input id="phone" placeholder="Phone">
+
+  <select id="plan">
+    <option>Monthly - 2000</option>
+    <option>Quarterly - 5000</option>
+    <option>Half Yearly - 8000</option>
+    <option>Yearly - 13000</option>
+  </select>
+
+  <button onclick="submit()">Submit</button>
+</section>
+
 <a href="https://wa.me/91984191408" class="whatsapp">💬</a>
 
 <script src="script.js"></script>
