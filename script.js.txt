@@ -1,0 +1,48 @@
+let members = JSON.parse(localStorage.getItem("members")) || [];
+
+function addMember() {
+  const name = document.getElementById("name").value;
+  const joinDate = new Date(document.getElementById("joinDate").value);
+  const planDays = parseInt(document.getElementById("plan").value);
+
+  if (!name || !joinDate) {
+    alert("Fill all fields");
+    return;
+  }
+
+  const expiry = new Date(joinDate);
+  expiry.setDate(expiry.getDate() + planDays);
+
+  members.push({ name, expiry: expiry.toDateString() });
+
+  localStorage.setItem("members", JSON.stringify(members));
+  displayMembers();
+}
+
+function displayMembers() {
+  const list = document.getElementById("memberList");
+  const alerts = document.getElementById("alerts");
+
+  list.innerHTML = "";
+  alerts.innerHTML = "";
+
+  const today = new Date();
+
+  members.forEach(m => {
+    const exp = new Date(m.expiry);
+
+    const li = document.createElement("li");
+    li.innerText = m.name + " - Expires: " + exp.toDateString();
+    list.appendChild(li);
+
+    const diff = Math.ceil((exp - today) / (1000 * 60 * 60 * 24));
+
+    if (diff <= 3) {
+      const alert = document.createElement("li");
+      alert.innerText = "⚠️ " + m.name + " expires in " + diff + " days";
+      alerts.appendChild(alert);
+    }
+  });
+}
+
+displayMembers();
